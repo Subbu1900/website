@@ -5,7 +5,7 @@ pipeline{
     //}
     environment {
 registry = "ashdockash/upmi"
-registryCredential = 'ashdockash'
+registryCredential = 'dockercred'
 dockerImage = ''
 }
     
