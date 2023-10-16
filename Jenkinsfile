@@ -23,8 +23,15 @@ dockerImage = ''
                 git'https://github.com/Subbu1900/website.git'
             }
         }
+        stage('Package'){
+            steps{
+                sh 'tar -czf myproj.tar.gz index.html images/'
+                archiveArtifacts artifacts: 'myproj.tar.gz',allowEmptyArchive:false
+            }
+        }
         stage('Building image') {
 steps{
+    sh 'docker build -t myproj:latest .'
 script {
 dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
