@@ -31,7 +31,7 @@ dockerImage = ''
         }
         stage('Building image') {
 steps{
-    sh 'docker build -t myproj:latest .'
+    //sh 'docker build -t myproj:latest .'
 script {
 dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
@@ -39,8 +39,8 @@ dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
 stage('Deploy image') {
 steps{
-    sshagent(['gitkey1']){
-        sh 'docker save myapp:latest "docker load"'}
+   // sshagent(['gitkey1']){
+     //   sh 'docker save myapp:latest "docker load"'}
 script {
 docker.withRegistry( '', registryCredential ) {
 dockerImage.push()
