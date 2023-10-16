@@ -27,7 +27,7 @@ dockerImage = ''
 
             steps {
 
-                sh 'docker build /home/subrahmanyam/jenkins/workspace/pipeline -t ashdockash/demo1'
+                sh 'docker build /home/subrahmanyam/jenkins -t ashdockash/demo1'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker push ashdockash/demo1'
 
