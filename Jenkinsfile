@@ -5,7 +5,7 @@ pipeline{
     //}
     environment {
 registry = "ashdockash/vs1"
-registryCredential = 'docker_id
+registryCredential = 'docker_id'
 dockerImage = ''
 }
     
