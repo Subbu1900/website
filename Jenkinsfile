@@ -4,8 +4,8 @@ pipeline{
     //    DOCKERHUB_CREDENTIALS=credentials('36055715-431a-4dc3-81fe-c0df2f7f1b9e')
     //}
     environment {
-registry = "ashdockash/upmi"
-registryCredential = 'dockercred'
+registry = "ashdockash/vs1"
+registryCredential = 'docker_id
 dockerImage = ''
 }
     
