@@ -25,7 +25,6 @@ dockerImage = ''
         }
         stage('Building image') {
 steps{
-    sh 'docker build -t website .'
 script {
 dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
