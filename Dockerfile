@@ -1,5 +1,5 @@
-//FROM nginx
-//COPY . /usr/share/nginx/html
+#FROM nginx
+#COPY . /usr/share/nginx/html
 # Choose base Ubuntu image from DockerHub
 FROM ubuntu:latest
 
