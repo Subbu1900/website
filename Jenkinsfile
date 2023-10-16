@@ -1,8 +1,13 @@
 pipeline{
     agent any
+    //environment {
+    //    DOCKERHUB_CREDENTIALS=credentials('36055715-431a-4dc3-81fe-c0df2f7f1b9e')
+    //}
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('36055715-431a-4dc3-81fe-c0df2f7f1b9e')
-    }
+registry = "ashdockash/upmi"
+registryCredential = 'ashdockash'
+dockerImage = ''
+}
     
     stages{
         stage('Hello'){
@@ -15,7 +20,7 @@ pipeline{
 
             steps{
 
-                git'https://github.com/intellipaat2/website.git'
+                git'https://github.com/Subbu1900/website.git'
             }
         }
         stage('docker') {
