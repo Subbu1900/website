@@ -23,16 +23,28 @@ dockerImage = ''
                 git'https://github.com/Subbu1900/website.git'
             }
         }
-        stage('docker') {
+        stage('Building image') {
+steps{
+script {
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
+}
+}
+}
+stage('Deploy image') {
+steps{
+script {
+docker.withRegistry( '', registryCredential ) {
+dockerImage.push()
+}
+}
+}
+}
+stage('Cleaning up') {
+steps{
+sh "docker rmi $registry:$BUILD_NUMBER"
+}
+}
 
-            steps {
-
-                sh 'docker build /home/subrahmanyam/jenkins -t ashdockash/demo1'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push ashdockash/demo1'
-
-            }
-        }
         //stage('Kuberneets') {
           
          //   steps {
