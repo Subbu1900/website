@@ -33,7 +33,7 @@ dockerImage = docker.build registry + ":$BUILD_NUMBER"
 stage('Deploy image') {
 steps{
     sshagent(['gitkey1']){
-        sh 'docker savemy-html-app:latest "docker load"'}
+        sh 'docker save my-html-app:latest "docker load"'}
 script {
 docker.withRegistry( '', registryCredential ) {
 dockerImage.push()
