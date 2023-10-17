@@ -52,7 +52,18 @@ sh 'docker save -o latimg.tar pro1:latest;docker load -i latimg.tar'
 }
         stage('Run Docker container'){
             steps{
-                sh 'docker rm -f $(docker ps -q -f "expose=82")'
+         sh '''
+                    container_ids=$(docker ps -a | grep 82 | awk \'{print $1}\')
+                    if [ -n "$container_ids" ]; then
+                        for container_id in $container_ids; do
+                            docker stop "$container_id"
+                            docker rm "$container_id"
+                        done
+                    else
+                        echo "No containers found running on port 82."
+                    fi
+                    '''
+
             sh 'docker run -d -p 82:80 pro1:latest'}
         }
 stage('Cleaning up') {
