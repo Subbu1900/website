@@ -50,7 +50,7 @@ dockerImage.push()
 }
 }
 }
-        stage('Run Dockercontainer'){
+        stage('Run Docker container'){
             steps{
             sh 'docker run -d -p 82:80 pro1:latest'}
         }
