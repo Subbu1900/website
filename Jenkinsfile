@@ -52,6 +52,7 @@ sh 'docker save -o latimg.tar pro1:latest;docker load -i latimg.tar'
 }
         stage('Run Docker container'){
             steps{
+                sh 'docker rm -f $(docker ps -q -f "expose=82")'
             sh 'docker run -d -p 82:80 pro1:latest'}
         }
 stage('Cleaning up') {
