@@ -40,7 +40,8 @@ dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
 stage('Deploy image') {
 steps{
-   // sshagent(['gitkey1']){
+sh 'docker save -o my_image.tar pro1:latest;docker load -i my_image.tar'    
+    // sshagent(['gitkey1']){
      //   sh 'docker save myapp:latest "docker load"'}
 script {
 docker.withRegistry( '', registryCredential ) {
