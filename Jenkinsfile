@@ -43,11 +43,11 @@ steps{
 sh 'docker save -o latimg.tar pro1:latest;docker load -i latimg.tar'    
     // sshagent(['gitkey1']){
      //   sh 'docker save myapp:latest "docker load"'}
-script {
-docker.withRegistry( '', registryCredential ) {
-dockerImage.push()
-}
-}
+//script {
+//docker.withRegistry( '', registryCredential ) {
+//dockerImage.push()
+//}
+//}
 }
 }
         stage('Run Docker container'){
