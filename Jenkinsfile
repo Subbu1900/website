@@ -31,7 +31,7 @@ dockerImage = ''
         }
         stage('Building image') {
 steps{
-    //sh 'docker build -t myproj:latest .'
+    sh 'docker build -t pro1:latest -f /home/subrahmanyam/Gitproject/ .'
 script {
 dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
