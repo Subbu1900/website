@@ -23,6 +23,18 @@ dockerImage = ''
                 git'https://github.com/Subbu1900/website.git'
             }
         }
+        stage('SonarQube Analysis'){
+            steps{
+             withSonarQubeEnv('SonarQubeServer') { 
+                    script {
+                        def scannerHome = tool 'sonar';
+                        withEnv(["PATH+SONAR=${scannerHome}/bin"]) {
+                            sh 'sonar-scanner -Dsonar.projectKey=demoproj -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_d239d86d91e3d3548e348bb174cddf84caef8bed'
+                        }
+                    }
+                }
+            }
+        }
         stage('Package'){
             steps{
                 sh 'tar -czf myproj.tar.gz index.html images/'
