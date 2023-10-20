@@ -10,12 +10,7 @@ dockerImage = ''
 }
     
     stages{
-        stage('Hello'){
-        
-            steps{
-                echo 'Hello World'
-            }
-        }
+    
         stage('git'){
 
             steps{
