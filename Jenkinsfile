@@ -73,11 +73,11 @@ sh 'docker save -o latimg.tar pro1:latest;docker load -i latimg.tar'
 
             sh 'docker run -d -p 82:80 pro1:latest'}
         }
-stage('Cleaning up') {
-steps{
-sh "docker rmi $registry:$BUILD_NUMBER"
-}
-}
+//stage('Cleaning up') {
+//steps{
+//sh "docker rmi $registry:$BUILD_NUMBER"
+//}
+//}
 
         //stage('Kuberneets') {
           
